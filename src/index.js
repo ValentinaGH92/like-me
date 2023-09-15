@@ -1,6 +1,6 @@
 const express = require("express");
-const middlewares = require("./routes");
 const cors = require("cors");
+const routes = require("./routes");
 const app = express();
 const port = 3000;
 
@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
 
 app.use(express.json());
 
-middlewares(app);
+routes(app);
 
 app.listen(port, () => {
   console.log(`La aplicación está funcionando en http://localhost:${port}`);

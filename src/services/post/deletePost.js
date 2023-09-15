@@ -1,16 +1,14 @@
 const pool = require("../../db");
 
-const createPost = async (req, res) => {
+const deletePost = async (req, res) => {
   try {
-    const { title, img } = req.body;
+    const { id } = req.params;
 
-    const result = await pool.query(
-      `INSERT INTO posts (titulo, img) VALUES ('${title}', '${img}')`
-    );
+    const result = await pool.query(`DELETE FROM posts WHERE id = '${id}'`);
 
     if (result.rowCount === 1)
       res.status(201).send({
-        message: "Post insertado correctamente",
+        message: "Post eliminado correctamente",
         status: 201,
       });
 
@@ -24,4 +22,4 @@ const createPost = async (req, res) => {
   }
 };
 
-module.exports = createPost;
+module.exports = deletePost;

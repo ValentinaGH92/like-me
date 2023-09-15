@@ -1,7 +1,7 @@
 const postRoutes = require("./posts");
 
-const middlewares = (app) => {
+const routes = (app) => {
   app.use("/", postRoutes);
 };
 
-module.exports = middlewares;
+module.exports = routes;
